@@ -1,3 +1,9 @@
+"""
+Este código busca informações do Status investe e salva m um excel.
+
+"""
+
+
 import requpiests
 import pandas as pd
 
