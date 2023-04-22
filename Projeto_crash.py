@@ -102,3 +102,53 @@ while True:
     r = cursor.fetchall()
     for i in r:
         print(i)
+
+    #segunda parte
+    cursor.execute(f"""
+                  select validacao_posibilidade, 
+((count (validacao)*100)/ 
+(select count(validacao_posibilidade) as total from crash_resultado
+where validacao_posibilidade = '{nome_p}' ))
+as possibilidade 
+from crash_resultado
+group by validacao_posibilidade, validacao
+having validacao_posibilidade = '{nome_p}' and validacao = 'Maior que 2x'              
+                   
+""")
+    
+    r = cursor.fetchall()
+    for i in r:
+        print(i)
+        print("_"*40)  
+
+    if var_0 != "0":
+        
+        nome_c =  f"( 1 2 )  ||| {resultado} ||| {var_0} |||"
+        
+        nome_t =  f"( 1 2 )  ||| {res_var_0} ||| {res_var_1} |||"
+
+        cursor.execute( f"""Select valor,
+        ((count(validacao))*100/(select count(valor) from crash_resultado  Where valor = '{nome_c}')) as valor_prob  
+    	from crash_resultado
+    	group by valor, validacao
+    	having valor = '{nome_c}' and validacao = 'Maior que 2x'""")
+        
+        
+        y = cursor.fetchall()
+        for uu in y:
+            print(uu)
+            print("_"*40)
+        
+        cursor.execute(f"""
+                      select validacao_posibilidade, 
+    ((count (validacao)*100)/ 
+    (select count(validacao_posibilidade) as total from crash_resultado
+    where validacao_posibilidade = '{nome_t}' ))
+    as possibilidade 
+    from crash_resultado
+    group by validacao_posibilidade, validacao
+    having validacao_posibilidade = '{nome_t}' and validacao = 'Maior que 2x'              
+                       
+    """)
+    xx = cursor.fetchall()
+   
