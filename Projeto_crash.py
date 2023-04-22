@@ -283,3 +283,66 @@ having validacao_posibilidade = '{nome_p}' and validacao = 'Maior que 2x'
         cursor.execute(comando)
         cursor.commit()
         print("( 1 2 ) Update Realizado")
+    #quarta parte
+    if resposta_2 != "0":
+        nome_db = f"( 1 2 3)  ||| {resposta} ||| {resposta_1} ||| {resposta_2} |||"
+        valor_db = nome_db
+        resultado_db = resultado
+        validacao_db = resposta_r
+        validacao_posibilidade = f"( 1 2 3)  ||| {res_var_0} ||| {res_var_1} ||| {res_var_2} |||"
+        
+        
+        comando = f"""insert into crash_resultado(valor, resultado, validacao,validacao_posibilidade )
+        Values('{valor_db}','{resultado_db}','{validacao_db}', '{validacao_posibilidade}')"""
+        cursor.execute(comando)
+        cursor.commit()
+        print("( 1 2 3) Update Realizado")
+        
+        
+    if resposta_3 != "0":
+        nome_db = f"( 1 2 3 4 )  ||| {resposta} ||| {resposta_1} ||| {resposta_2} ||| {resposta_3} |||"
+        valor_db =  nome_db
+        resultado_db = resultado
+        validacao_db = resposta_r 
+        validacao_posibilidade = f"( 1 2 3 4 )  ||| {res_var_0} ||| {res_var_1} ||| {res_var_2} ||| {res_var_3} |||"
+        
+        comando = f"""insert into crash_resultado(valor, resultado, validacao,validacao_posibilidade )
+        Values('{valor_db}','{resultado_db}','{validacao_db}', '{validacao_posibilidade}')"""
+        cursor.execute(comando)
+        cursor.commit()
+        print("( 1 2 3 4 ) Update Realizado")
+        
+    if resposta_4 != "0":
+        nome_db = f"( 1 2 3 4 5 )  ||| {resposta} ||| {resposta_1} |||| {resposta_2} ||| {resposta_3} ||| {resposta_4} |||"
+        valor_db = nome_db
+        resultado_db = resultado
+        validacao_db = resposta_r
+
+        validacao_posibilidade = f"( 1 2 3 4 5 )  ||| {res_var_0} ||| {res_var_1} |||| {res_var_2} ||| {res_var_3} ||| {res_var_4} |||"
+        
+        comando = f"""insert into crash_resultado(valor, resultado, validacao,validacao_posibilidade )
+        Values('{valor_db}','{resultado_db}','{validacao_db}', '{validacao_posibilidade}')"""
+        cursor.execute(comando)
+        cursor.commit()
+        print("( 1 2 3 4 5 ) Update Realizado")
+        
+           
+    resposta_4 = resposta_3 
+    resposta_3 = resposta_2
+    resposta_2 = resposta_1
+    resposta_1 = resposta
+    resposta = resultado
+    res_var_4 = res_var_3
+    res_var_3 = res_var_4
+    res_var_3 = res_var_2
+    res_var_2 = res_var_1
+    res_var_1 = res_var_0
+    var_3 = var_2
+    var_2 = var_1     
+    var_1 = var_0
+    var_0 = resultado
+
+    print()
+    print("="*40)
+    sleep(10)
+    os.system('cls')
