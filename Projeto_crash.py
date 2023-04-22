@@ -151,4 +151,135 @@ having validacao_posibilidade = '{nome_p}' and validacao = 'Maior que 2x'
                        
     """)
     xx = cursor.fetchall()
-   
+   #terceira parte
+    for ii in xx:
+        print(ii)
+        
+    if var_1 != "0":
+        
+        nome_c =  f"( 1 2 3)  ||| {resultado} ||| {var_0} ||| {var_1} |||"
+        
+        nome_t =  f"( 1 2 3)  ||| {res_var_0} ||| {res_var_1} ||| {res_var_2} |||"
+
+        cursor.execute( f"""Select valor,
+        ((count(validacao))*100/(select count(valor) from crash_resultado  Where valor = '{nome_c}')) as valor_prob  
+    	from crash_resultado
+    	group by valor, validacao
+    	having valor = '{nome_c}' and validacao = 'Maior que 2x'""")
+        
+        
+        y = cursor.fetchall()
+        for uu in y:
+            print(uu)
+       
+        
+        cursor.execute(f"""
+                      select validacao_posibilidade, 
+    ((count (validacao)*100)/ 
+    (select count(validacao_posibilidade) as total from crash_resultado
+    where validacao_posibilidade = '{nome_t}' ))
+    as possibilidade 
+    from crash_resultado
+    group by validacao_posibilidade, validacao
+    having validacao_posibilidade = '{nome_t}' and validacao = 'Maior que 2x'              
+                       
+    """)
+        xx = cursor.fetchall()
+        for ii in xx:
+            print(ii)
+            print("_"*40)  
+        
+    if var_2 != "0":
+        
+         nome_2v =  f"( 1 2 3 4 )  ||| {resultado} ||| {var_0} ||| {var_1} ||| {var_2} |||"
+         
+         nome_2t =   f"( 1 2 3 4 )  ||| {res_var_0} ||| {res_var_1} ||| {res_var_2} ||| {res_var_3} |||"
+
+         cursor.execute( f"""Select valor,
+         ((count(validacao))*100/(select count(valor) from crash_resultado  Where valor = '{nome_2v}')) as valor_prob  
+     	from crash_resultado
+     	group by valor, validacao
+     	having valor = '{nome_2v}' and validacao = 'Maior que 2x'""")
+         
+         
+         y = cursor.fetchall()
+         for uu in y:
+             print(uu)
+        
+         
+         cursor.execute(f"""
+                       select validacao_posibilidade, 
+     ((count (validacao)*100)/ 
+     (select count(validacao_posibilidade) as total from crash_resultado
+     where validacao_posibilidade = '{nome_2t}' ))
+     as possibilidade 
+     from crash_resultado
+     group by validacao_posibilidade, validacao
+     having validacao_posibilidade = '{nome_2t}' and validacao = 'Maior que 2x'              
+                        
+     """)
+         xx = cursor.fetchall()
+         for ii in xx:
+             print(ii)
+             print("_"*40)  
+                 
+    if var_3 != "0":
+         
+            nome_3v =   f"( 1 2 3 4 5 )  ||| {resultado} ||| {var_0} |||| {var_1} ||| {var_2} ||| {var_3} |||"
+            
+            nome_3t =    f"( 1 2 3 4 5 )  ||| {res_var_0} ||| {res_var_1} |||| {res_var_2} ||| {res_var_3} ||| {res_var_4} |||"
+            cursor.execute( f"""Select valor,
+            ((count(validacao))*100/(select count(valor) from crash_resultado  Where valor = '{nome_3v}')) as valor_prob  
+        	from crash_resultado
+        	group by valor, validacao
+        	having valor = '{nome_3v}' and validacao = 'Maior que 2x'""")
+            
+            
+            y = cursor.fetchall()
+            for uu in y:
+                print(uu)
+           
+            
+            cursor.execute(f"""
+                          select validacao_posibilidade, 
+        ((count (validacao)*100)/ 
+        (select count(validacao_posibilidade) as total from crash_resultado
+        where validacao_posibilidade = '{nome_3t}' ))
+        as possibilidade 
+        from crash_resultado
+        group by validacao_posibilidade, validacao
+        having validacao_posibilidade = '{nome_3t}' and validacao = 'Maior que 2x'              
+                           
+        """)
+            xx = cursor.fetchall()
+            for ii in xx:
+                print(ii)
+                print("_"*40) 
+                
+             
+    if resposta != "0":
+         print() 
+         print("="*40) 
+         nome_db =  f"( 1 )  ||| {resposta} |||"
+         valor_db =  nome_db
+         resultado_db = resultado
+         validacao_db = resposta_r
+         validacao_posibilidade =f"( 1 )  ||| {res_var_0} |||"
+         comando = f"""insert into crash_resultado(valor, resultado, validacao,validacao_posibilidade )
+         Values('{valor_db}','{resultado_db}','{validacao_db}', '{validacao_posibilidade}')"""
+         cursor.execute(comando)
+         cursor.commit()
+         print("( 1 ) Update Realizado")
+    
+    if resposta_1 != "0":
+        nome_db = f"( 1 2 )  ||| {resposta} ||| {resposta_1} |||"
+        valor_db = nome_db
+        resultado_db = resultado
+        validacao_db =resposta_r
+        validacao_posibilidade =f"( 1 2 )  ||| {res_var_0} ||| {res_var_1} |||"
+        
+        comando = f"""insert into crash_resultado(valor, resultado, validacao,validacao_posibilidade )
+        Values('{valor_db}','{resultado_db}','{validacao_db}', '{validacao_posibilidade}')"""
+        cursor.execute(comando)
+        cursor.commit()
+        print("( 1 2 ) Update Realizado")
