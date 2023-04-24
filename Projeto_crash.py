@@ -1,3 +1,8 @@
+"""
+Um teste para fazer calculos de probabilidades para o proximo numero no crash
+
+"""
+
 import pyscreenshot 
 import  cv2
 import pytesseract
@@ -5,6 +10,7 @@ from time import sleep
 import pyodbc
 import os
 
+#Conexão com o sql server
 dados_conexao = (
     "Driver={SQL Server};"
     "Server=DESKTOP-KJN77H7\SQLEXPRESS;"
@@ -22,6 +28,7 @@ print("           Conexão Bem Sucedida")
 print("="*40)
 
 cursor = conexao.cursor()
+
 
 resposta = "0"
 resposta_1 = "0"
@@ -41,19 +48,24 @@ var_1 = "0"
 var_2 = "0"
 var_3 = "0"
 
+#loop infinito que fica tirando print da tela até encontrar algo diferente de vazio para anota o valor que parou o crash
+
 while True:
+    #loop do crash
     resultado_crash = ""
     while resultado_crash == "":
         pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
         image_crash = pyscreenshot.grab(bbox=(300,350, 600, 435))
-        image_crash.save("Crashed.png") 
+        image_crash.save("Crash.png") 
         img_crashed = cv2.imread('C:/Users/eduar/Desktop/Crashed.png')
         resultado_crash = pytesseract.image_to_string(img_crashed)
-   
+
+    #print do valor que parou o crash
     pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
     image_valor = pyscreenshot.grab(bbox=(360,430, 570, 600))
     image_valor.save("Imagem.png")
     img_t = cv2.imread('C:/Users/eduar/Desktop/Imagem.png')
+    #limpando o valor
     resultado = pytesseract.image_to_string(img_t)
     resultado =  resultado.split("x")
     resultado = resultado[0]
@@ -74,7 +86,7 @@ while True:
     print(resultado_crash)
     print(resultado)
    
-    
+    #teste de valores e insert no banco os valores
     teste = float(resultado)
 
     if resultado > "2.00":
