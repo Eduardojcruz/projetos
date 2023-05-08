@@ -23,10 +23,10 @@ choice_user = input("Quantos digitos na senha?")
 if choice_user.isdigit():
     choice_user = int(choice_user)
     response  = password_generator(len_pass = choice_user)
-    print("Senha gerada {}".format(response))
+    print("Senha gerada: {}".format(response))
 
 else:
-    print("Valor invalido ")
+    print("Valor inválido ")
     quit()
 
 
