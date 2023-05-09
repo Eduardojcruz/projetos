@@ -10,6 +10,7 @@ computer_points = 0
 
 options = ["r", "t", "p"]
 
+options_resultado = ["Pedra", "Tesoura", "Papel"]
 
 while True:
     user_choice = input("\n R(Pedra) \n T(Tesoura) \n P(Papel) \n Q para sair. \n Escolha: ").lower()
@@ -23,8 +24,10 @@ while True:
     comp_choice = random.randint(0, 2)
 
     compu_options = options[comp_choice]
+    options_resultado_ = options_resultado[comp_choice]
+    
     print("-" * 20 )
-    print(f" O computador escolheu: {compu_options}" )
+    print(f" O computador escolheu: {options_resultado_}" )
 
     if user_choice == compu_options:
         print(" Empate!")
