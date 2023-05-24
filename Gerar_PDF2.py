@@ -33,3 +33,20 @@ email_msg['From'] = login
 email_msg['To'] = login
 email_msg['Subject'] = corpo
 
+
+email_msg.attach(MIMEText(corpo, "html"))
+
+cam_arquivo = cam_arquivo
+nome = nome
+
+# Anexar o arquivo PDF
+with open(cam_arquivo, 'rb') as attachment:
+    att = MIMEBase('application', 'octet-stream')
+    att.set_payload(attachment.read())
+    encoders.encode_base64(att)
+    att.add_header('Content-Disposition', f'attachment; filename={nome}')
+    email_msg.attach(att)
+
+# Enviar o email
+server.sendmail(email_msg['From'], email_msg['To'], email_msg.as_string())
+server.quit()
